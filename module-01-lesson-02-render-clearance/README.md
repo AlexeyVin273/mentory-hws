@@ -1,49 +1,22 @@
-# Mentory Template
+# Задание 02. Чистота render и выбор курса
 
-Стартовый проект для учебных заданий: React, TypeScript, Vite, ESLint.
-Настройки перенесены из TaskForge. Сохранены алиас `@` → `src` и SVGR
-(импорт SVG-компонента через `?react`).
+Список карточек курсов с кнопкой «Выбрать курс».
+
+Цель — перенести запись выбранного id из render в обработчик клика.
+До нажатия localStorage не меняется, после — хранит id выбранного курса
+под ключом `selected-course`. Повторный render не вызывает запись.
+
+Запись в useEffect без связи с кликом не подходит: Effect может
+выполниться без действия пользователя.
+
+## Исходники
+
+- [CourseCard.tsx](src/app/CourseCard/CourseCard.tsx) — карточка и обработчик выбора.
+- [CoursesBoard.tsx](src/app/CoursesBoard/CoursesBoard.tsx) — вывод списка курсов.
+- [course.types.ts](src/app/course.types.ts) — тип данных курса.
+- [courses.json](src/app/courses.json) — исходные данные.
 
 ## Запуск
 
-```sh
 npm ci
 npm run dev
-```
-
-Открой адрес, который Vite напечатает в терминале.
-
-## Проверка
-
-```sh
-npm run lint
-npm run build
-```
-
-`npm run build` проверяет TypeScript и собирает приложение в `dist`.
-`npm run preview` запускает просмотр готовой сборки.
-ESLint предупреждает о неиспользуемых переменных, а TypeScript может
-остановить сборку из-за неиспользуемых локальных переменных и параметров.
-
-## Структура
-
-- `src/main.tsx` — точка входа React.
-- `src/app/App.tsx` — корневой компонент приложения.
-- `src/app/styles/index.css` — глобальные стили.
-- `src/shared/ui` — общие UI-компоненты; `.gitkeep` сохраняет пустую папку в Git.
-
-Слои FSD `pages`, `widgets`, `features`, `entities` добавляются по мере
-необходимости. Конфигурация ESLint пока не проверяет границы слоёв FSD.
-
-## Новый урок
-
-1. Скопируй эту папку рядом, например в `lesson-01-render-and-commit`.
-   Не копируй `node_modules`, `dist` и `.git`, если они есть.
-2. Сохрани `AGENTS.md`: он задаёт ручной режим работы над учебным кодом.
-3. Измени `name` в `package.json` на имя урока и заголовок в `index.html`.
-4. В папке урока выполни `npm install`: команда установит зависимости
-   и синхронизирует имя в `package-lock.json`.
-5. Выполни `npm run dev`.
-
-Зависимости и команды каждого урока независимы. Git-репозиторий общий,
-в корне `mentory-hws`; отдельный `git init` в уроках не нужен.
