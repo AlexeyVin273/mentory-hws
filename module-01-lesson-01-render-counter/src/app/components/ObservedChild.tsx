@@ -20,7 +20,12 @@ const ObservedChild = ({title}: {title: string}) => {
       subtree: true
     })
 
-    return () => observer.disconnect()
+    console.log('Подключение')
+
+    return () => {
+      observer.disconnect()
+      console.log('Очистка')
+    }
   }, [])
 
   return (
