@@ -1,0 +1,43 @@
+.page {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: clamp(1.25rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
+}
+
+.page h1 {
+  margin: 0 0 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+}
+
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1.25rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 20rem;
+}
+
+.filter select {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #a6afbf;
+  border-radius: 0.625rem;
+  background: #fff;
+  color: #1d273b;
+  font: inherit;
+}
+
+.filter select:focus-visible {
+  outline: 3px solid #354bc2;
+  outline-offset: 3px;
+}

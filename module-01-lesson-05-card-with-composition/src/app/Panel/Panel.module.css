@@ -1,0 +1,78 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #dfe3ec;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 4px 16px rgb(24 39 75 / 4%);
+  overflow-wrap: anywhere;
+}
+
+.panel > h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.content {
+  min-width: 0;
+  color: #566176;
+}
+
+.content > :first-child {
+  margin-top: 0;
+}
+
+.content > :last-child {
+  margin-bottom: 0;
+}
+
+.content p {
+  margin-block: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.actions button {
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.625rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.625rem;
+  background: #354bc2;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.actions button:hover:not(:disabled) {
+  background: #293c9e;
+}
+
+.actions button:active:not(:disabled) {
+  background: #21317f;
+}
+
+.actions button:focus-visible {
+  outline: 3px solid #354bc2;
+  outline-offset: 3px;
+}
+
+.actions button:disabled {
+  background: #e8ebf2;
+  color: #626d80;
+  cursor: not-allowed;
+}
