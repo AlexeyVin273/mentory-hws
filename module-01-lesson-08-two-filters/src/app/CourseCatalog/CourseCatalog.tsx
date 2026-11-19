@@ -18,6 +18,11 @@ const CourseCatalog = () => {
     setSelectedCourseId(id)
   }
 
+  const resetFiltersHandler =() => {
+    setCategory('')
+    setSearch('')
+  }
+
   return (
     <div className={styles.catalog}>
       {
@@ -46,28 +51,15 @@ const CourseCatalog = () => {
             </select>
           </div>
           <ControlledSearch search={search} onSearchChange={setSearch} />
+          <button className={styles.resetButton} type="button" onClick={resetFiltersHandler}>
+            Сбросить фильтры
+          </button>
         </div>
       </Panel>
 
-      <Panel title="Результаты фильтрации">
+      <Panel title={`Найдено курсов: ${filteredCourses.length}`}>
         <CourseListView
           items={filteredCourses}
-          emptyText="Курсы не найдены"
-          onSelect={courseSelectHandler}
-        />
-      </Panel>
-
-      <Panel title="Полный список курсов">
-        <CourseListView
-          items={courses}
-          emptyText="Курсы не найдены"
-          onSelect={courseSelectHandler}
-        />
-      </Panel>
-
-      <Panel title="Пустой список курсов">
-        <CourseListView
-          items={[]}
           emptyText="Курсы не найдены"
           onSelect={courseSelectHandler}
         />
