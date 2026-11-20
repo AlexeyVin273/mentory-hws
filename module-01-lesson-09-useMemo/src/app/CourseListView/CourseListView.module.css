@@ -12,6 +12,10 @@
   li {
     display: flex;
   }
+
+  li > * {
+    flex-grow: 1;
+  }
 }
 
 .empty {

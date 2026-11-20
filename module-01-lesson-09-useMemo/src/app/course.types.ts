@@ -13,3 +13,5 @@ export type CourseListViewProps = {
   emptyText: string
   onSelect?: CourseSelectFn
 }
+
+export type CourseSort = 'default' | 'title-asc' | 'title-desc' | 'category' | 'seats'
