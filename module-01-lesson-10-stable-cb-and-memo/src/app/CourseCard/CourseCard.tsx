@@ -1,7 +1,9 @@
-import type { Course, CourseSelectFn } from '../course.types'
+import { memo } from 'react';
+import type { Course, CourseCardOptions, CourseSelectFn } from '../course.types'
 import Panel from '../Panel/Panel';
 
-function CourseCard({ course, onSelect }: { course: Course; onSelect: CourseSelectFn }) {
+function CourseCard({ course, onSelect, options }: { course: Course; onSelect: CourseSelectFn; options: CourseCardOptions }) {
+  console.log(`CourseCard: ${course.title} rendered`);
   return (
     <Panel
       title={course.title}
@@ -12,9 +14,9 @@ function CourseCard({ course, onSelect }: { course: Course; onSelect: CourseSele
       }
     >
       <p>Категория: {course.category}</p>
-      <p>Свободных мест: {course.seats}</p>
+      {options.showSeats && <p>Свободных мест: {course.seats}</p>}
     </Panel>
   )
 }
 
-export default CourseCard;
+export default memo(CourseCard);

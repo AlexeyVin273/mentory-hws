@@ -6,10 +6,15 @@ export type Course = {
   version: number
 }
 
+export type CourseCardOptions = {
+  showSeats: boolean
+}
+
 export type CourseSelectFn = (id: string) => void
 
 export type CourseListViewProps = {
   items: Course[]
   emptyText: string
   onSelect: CourseSelectFn
+  options: CourseCardOptions
 }
