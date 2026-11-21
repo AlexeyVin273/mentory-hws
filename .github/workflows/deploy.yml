@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: module-01-lesson-09-useMemo
+        working-directory: module-01-lesson-10-stable-cb-and-memo
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: '24'
           cache: npm
-          cache-dependency-path: module-01-lesson-09-useMemo/package-lock.json
+          cache-dependency-path: module-01-lesson-10-stable-cb-and-memo/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -43,7 +43,7 @@ jobs:
       - name: Upload site
         uses: actions/upload-pages-artifact@v5
         with:
-          path: module-01-lesson-09-useMemo/dist
+          path: module-01-lesson-10-stable-cb-and-memo/dist
 
   deploy:
     needs: build
