@@ -1,0 +1,48 @@
+button.selectButton,
+button.favoriteButton {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+button.selectButton {
+  background: #354bc2;
+  box-shadow: 0 2px 4px rgb(53 75 194 / 15%);
+}
+
+button.selectButton[aria-pressed='true'] {
+  background: #26399c;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 20%);
+}
+
+button.favoriteButton {
+  border-color: #dce1f5;
+  background: #f5f6fc;
+  color: #354bc2;
+}
+
+button.favoriteButton:hover:not(:disabled) {
+  border-color: #b9c3ee;
+  background: #e9edfb;
+}
+
+button.favoriteButton:active:not(:disabled) {
+  background: #dfe5f9;
+}
+
+button.favoriteButton[aria-pressed='true'] {
+  border-color: #b9c3ee;
+  background: #e9edfb;
+  color: #26399c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button.selectButton,
+  button.favoriteButton {
+    transition: none;
+  }
+}
