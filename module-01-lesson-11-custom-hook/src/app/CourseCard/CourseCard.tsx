@@ -1,21 +1,33 @@
 import { memo } from 'react';
-import type { Course, CourseCardOptions, CourseSelectFn } from '../course.types'
+import type { Course, CourseSelectFn } from '../course.types'
 import Panel from '../Panel/Panel';
 
-function CourseCard({ course, onSelect, options }: { course: Course; onSelect: CourseSelectFn; options: CourseCardOptions }) {
+function CourseCard({
+  course,
+  onSelect,
+  isFavorite
+}: {
+  course: Course;
+  onSelect: CourseSelectFn;
+  isFavorite: boolean
+}) {
   return (
     <Panel
       title={course.title}
       actions={
         <button type="button" onClick={() => onSelect(course.id)}>
-          Выбрать курс
+          {
+            isFavorite
+              ? "Убрать из избранного"
+              : "Добавить в избранное"
+          }
         </button>
       }
     >
       <p>Категория: {course.category}</p>
-      {options.showSeats && <p>Свободных мест: {course.seats}</p>}
+      <p>Свободных мест: {course.seats}</p>
     </Panel>
   )
 }
 
-export default memo(CourseCard);
+export default CourseCard;

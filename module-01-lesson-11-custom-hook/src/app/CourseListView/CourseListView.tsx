@@ -2,7 +2,7 @@ import type { CourseListViewProps } from '../course.types'
 import CourseCard from '../CourseCard/CourseCard'
 import styles from './CourseListView.module.css'
 
-const CourseListView = ({ items, emptyText, onSelect, options }: CourseListViewProps) => {
+const CourseListView = ({ items, ids, emptyText, onSelect }: CourseListViewProps) => {
   return (
     <div>
       {
@@ -11,7 +11,7 @@ const CourseListView = ({ items, emptyText, onSelect, options }: CourseListViewP
             {
               items.map(course => (
                 <li key={course.id}>
-                  <CourseCard course={course} onSelect={onSelect} options={options} />
+                  <CourseCard course={course} onSelect={onSelect} isFavorite={ids.includes(course.id)} />
                 </li>
               ))
             }

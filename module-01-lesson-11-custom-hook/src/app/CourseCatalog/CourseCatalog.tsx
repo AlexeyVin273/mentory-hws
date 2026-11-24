@@ -1,38 +1,35 @@
-import { useState } from 'react'
 import Panel from '../Panel/Panel'
 import CourseListView from '../CourseListView/CourseListView'
+import { useFavorites } from '../hooks/useFavorites'
 import styles from './CourseCatalog.module.css'
 import courses from '../courses.json'
 
 const CourseCatalog = () => {
-  const [selectedIds, setSelectedIds] = useState<string[]>([])
+  const { ids, toggle, clear } = useFavorites()
 
-  const handleSelect = (id: string) => {
-    setSelectedIds(prev => [...prev, id])
-  }
+  const actions =
+    <button type="button" onClick={clear}>Очистить</button>
 
   return (
     <div className={styles.catalog}>
-      <Panel title="Результат">
-        <div className={styles.filtersContainer}>
-          {
-            selectedIds.length > 0 ? (
-              <p className={styles.selectedCourse}>
-                Выбранные курсы: {selectedIds.map(id => courses.find(course => course.id === id)?.title).join(', ')}
-              </p>
-            ) : <p>
-              Выберите курс из списка ниже
+      <Panel title="Избранное" actions={actions}>
+        {
+          ids.length > 0 ? (
+            <p className={styles.selectedCourse}>
+              Выбранные курсы: {ids.map(id => courses.find(course => course.id === id)?.title).join(', ')}
             </p>
-          }
-        </div>
+          ) : <p>
+            Выберите курс из списка ниже
+          </p>
+        }
       </Panel>
 
       <Panel title="Cписок курсов">
         <CourseListView
           items={courses}
+          ids={ids}
           emptyText="Курсы не найдены"
-          onSelect={handleSelect}
-          options={{ showSeats: true }}
+          onSelect={toggle}
         />
       </Panel>
     </div>
