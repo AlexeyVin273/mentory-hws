@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import type { Course, CourseSelectFn } from '../course.types'
 import Panel from '../Panel/Panel';
 
