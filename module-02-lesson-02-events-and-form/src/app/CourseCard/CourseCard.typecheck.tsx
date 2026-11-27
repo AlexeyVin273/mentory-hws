@@ -13,8 +13,12 @@ const onSelect = (id: string): void => {
   console.log(id)
 }
 
+const onSave = (updatedCourse: Course): void => {
+  console.log('Course was updated with', updatedCourse)
+}
+
 // Проверяется TypeScript, но не подключается к интерфейсу.
-export const validExample = <CourseCard course={course} isSelected={false} onSelect={onSelect} />
+export const validExample = <CourseCard course={course} isSelected={false} onSelect={onSelect} onSave={onSave} />
 
 // @ts-expect-error: isSelected принимает boolean, а не строку.
-export const invalidExample = <CourseCard course={course} isSelected="yes" onSelect={onSelect} />
+export const invalidExample = <CourseCard course={course} isSelected="yes" onSelect={onSelect} onSave={onSave} />

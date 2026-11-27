@@ -11,7 +11,7 @@
     margin: 0;
   }
 
-  & button {
+  & > button {
     padding: 0.5rem 1rem;
 
     font-size: 20px;
