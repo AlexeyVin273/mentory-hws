@@ -9,13 +9,13 @@ type CourseCardProps = {
 
 export default function CourseCard({ course, isSelected, onSelect }: CourseCardProps) {
   return (
-    <div className={styles.courseCard}>
+    <article className={`${styles.courseCard} ${isSelected ? styles.selected : ''}`}>
+      <span className={styles.category}>{course.category}</span>
       <h3>{course.title}</h3>
-      <p>Категория: {course.category}</p>
-      <p>Свободных мест: {course.seats}</p>
+      <p className={styles.seats}>{course.seats === 0 ? 'Свободных мест пока нет' : `Свободных мест: ${course.seats}`}</p>
       <button type="button" aria-pressed={isSelected} onClick={() => onSelect(course.id)}>
         {isSelected ? 'Выбран' : 'Выбрать курс'}
       </button>
-    </div>
+    </article>
   )
 }
