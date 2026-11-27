@@ -1,4 +1,4 @@
-name: Deploy course cards to GitHub Pages
+name: Deploy homework catalog to GitHub Pages
 
 on:
   push:
@@ -17,9 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: module-01-lesson-12-dashboard-state
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -29,13 +26,10 @@ jobs:
         with:
           node-version: '24'
           cache: npm
-          cache-dependency-path: module-01-lesson-12-dashboard-state/package-lock.json
+          cache-dependency-path: module-*/package-lock.json
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Vite app
-        run: npm run build
+      - name: Build all lessons and catalog
+        run: node scripts/build-pages.mjs --install
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
@@ -43,7 +37,7 @@ jobs:
       - name: Upload site
         uses: actions/upload-pages-artifact@v5
         with:
-          path: module-01-lesson-12-dashboard-state/dist
+          path: dist
 
   deploy:
     needs: build
